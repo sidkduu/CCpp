@@ -1,0 +1,54 @@
+自定义数据类型（typedef）
+
+·C 语言提供了一个叫做typedef 的功能来声明一个已有数据类型的新名字。
+	比如：typedef int length
+  使得lngth 成为int 类型的别名
+·这样，length 这个名字就可以代替int 类型的别名。
+·这样，length 这个名字就看容易代替int 出现在变量定义和参数声明的地方了：
+	Length a, b, len ;
+	Length numbers[10];
+
+Typedef
+声明新的类型的名字
+·新的名字是某种类型的别名
+·改善了程序的可读性
+
+-------------------------------------------------
+
+typedef long int64_t;		//重载已有类型的名字，新名字的含义更清晰，具有可移植性
+typedef struct ADate {
+	int month;
+	int day;
+	int year;
+} Date;				//简化了复杂的名字
+
+int64_t i = 100000000000;
+Date d = { 9,  1,  2005};
+
+-------------------------------------------------
+
+typedef struct {			//将一个struct 结构命名为Date，至于Struct叫什么已经不重要了
+	int month;
+	int day;
+	int year;
+} Date;	
+
+-------------------------------------------------
+
+typedef int Length; 		// Length等价于int 类型
+
+typedef* char[10] Strings;	//Strings 是10个字符指针的数组的类型
+
+
+typedef struct node{
+	int data;
+	struct node* next;
+} aNode;
+
+或
+
+typedef struct node aNode; 	//这样用aNode就可以代替 struct node
+
+
+			
+

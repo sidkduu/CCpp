@@ -1,0 +1,14 @@
+位段
+·把一个int 的若干个位组合成一个结构
+	struct{
+		unsigned int leading ：3;
+		unsigned int FLAG1 ：1;
+		unsigned int FLAG2 ：1;
+		int trailing : 11;
+	};
+
+·可以直接用位段的成员名称来访问
+·比移位、与、或还方便
+·编译器会安排其中位的排列，不具有可移植性
+·所需的位超过一个int会采用多个int
+·用于底层直接操作硬件的场合

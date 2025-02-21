@@ -1,0 +1,42 @@
+定义的数组在运行中是无法改变大小，大点的数组也未必够用
+·用C 语言自己实现一个可变大小的数组
+
+Resizable array
+·think about a set of functions that provide a mechanism of resizable array of int
+·Growable
+·Get the current size
+·Access to the elements
+
+
+The Interface （函数库）
+·定义一些函数库，可以为我们提供可变大小的数组
+·Array array_create(int init_size);				//创建一个数组
+·void array_free(Array* a);					//回收数组的空间
+·int array_size(const Array* a);				//定义数组的单元
+·int* array_at(Array* a, int index);				//获得其中的某个单元
+·void array_inflate(Array* a, int more_size);		//（核心函数）让数组变长
+
+
+The Array
+·有人会写成此形式
+typedef struct {
+	int* array;
+	int size;
+} * Array;
+如果定义Array是一个指针（*之前是结构），之后函数的*就可以去掉，比较美观（bushi）
+但是这样的话无法在函数里做出一个本地变量
+void f()
+{
+	Array a			// 如果Array是结构，则a是本地变量；如果Array是指针，则a 一定是从别处动态申请来的
+}
+·在定义结构的变量类型的时候，不要把定义为指针类型
+
+·本章还是不够了解
+
+memcpy 函数
+是c语言一个用于内存复制的函数
+
+
+
+
+

@@ -1,0 +1,95 @@
+格式化的输入输出
+·printf
+·%[flags][width][.prec][hlL]type
+
+·scanf
+·%[flag]type
+
+
+
+% [flags] [width] [.prec] [hlL] type
+
+·	flag 		    	    	    含义（输出要求）
+ 	 -			  	左对齐
+	 +				在前面放+ 或 -（如果没有+ 号）
+	(space)			正数留空
+	0				0 填充
+
+
+·	[width]或[.prec]		    含义（宽度 和 精度）
+	number			最小字符数
+	*				下一个参数是字符数
+	.number			小数点后的位数
+	.*				下一个参数是小数点后的位数
+
+
+·	[hiL]				    含义（类型修饰）
+	hh				单个字节（char）
+	h				short
+	l				long
+	ll				long long
+	L				long double
+
+
+·	type 				    用于
+	i 或d				int
+	u				unsigned int无符号数
+	o				八进制
+	x				十六进制
+	X				字母大写的十六进制
+	f 或F				float，6
+	e 或 E				指数
+	g				float
+	G				float
+	a 或 A				十六进制浮点
+	c				char
+	s				字符串
+	p				指针
+	n				读入/ 写出的个数（VS 2022上目前无法输出）（2022/12/13）
+
+-------------------------------------------------
+
+scanf：  %[flag] type
+·	flag				    含义
+	*				跳过				int num;scanf ("%*d%d", num);printf("%d\n", num); 输入：123 456，输出： 456
+	数字				最大字符数
+	hh				char
+	h				short
+	l				long， double
+	ll				long long
+	L				long double
+
+
+·	type				    用于
+	d				int
+	i				整数。可能为十六进制或十八进制
+	u				unsigned int
+	o				八进制
+	x				十六进制
+	a，e，f，g			float
+	c				char
+	s				字符串（单词）
+	[...]				所允许的字符
+	p				指针
+	
+
+e.g.读入 GPS 数据
+
+·// $GPRMC, 003419.00,A,3016.98468,N,12006.39211,E,0.047,,130909,,,D*79
+·scanf ("%*[^.]",%[^.],%[^.],%[^.],%[^.],%[^.],%[^.],%[^.],%[^.],%[^.]",				 
+	 sTime, sAV, sLati, &sNW, sLong, &sEW, sSpeed, sAngle, sDate);
+
+·输入格式的含义：从一开始读到第一个"," 为止全部跳过，再读掉一个","
+    %[^,]的含义是"," 前面的任何东西作为一个字符串读入，交给一个字符串变量
+
+
+
+printf 和 scanf 的返回值
+·读入的项目数
+·输出的字符数
+·在要求严格的程序中，应该判断每次调用scanf 或printf 的返回值，
+    从而了解程序运行中是否存在问题。
+
+
+
+
